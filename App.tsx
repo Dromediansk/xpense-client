@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider } from "react-native-elements";
+import { theme } from "./src/utils/theme";
+import { RootStackParamList } from "./src/screens/types";
+import HomeScreen from "./src/screens/DashboardScreen";
+import AddRecordScreen from "./src/screens/AddRecordScreen";
 
 export default function App() {
+  const Stack = createStackNavigator<RootStackParamList>();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Dashboard">
+            <Stack.Screen
+              name="Dashboard"
+              component={HomeScreen}
+              options={{ title: "Title" }}
+            />
+            <Stack.Screen name="AddRecord" component={AddRecordScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
