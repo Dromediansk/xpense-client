@@ -1,4 +1,4 @@
-export type RootStackParamList = {
+export type RootDrawerParamList = {
   Dashboard: undefined;
   AddRecord: undefined;
 };
