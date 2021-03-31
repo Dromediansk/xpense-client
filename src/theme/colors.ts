@@ -8,7 +8,7 @@ export const colors = {
     primary: "#658C49",
     secondary: "#D9D3B8",
     tertiary: "#717343",
-    quaternary: "#F2F2F2",
+    grayed: "#BDBDBD",
     disabled: "#DEDEDE",
     error: "#D0421B",
     success: "#138000",

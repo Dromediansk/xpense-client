@@ -1,6 +1,6 @@
 import { colors } from "./../../theme/colors";
 import styled from "styled-components";
-import { Button, TextInput } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 
 export const AuthInput = styled(TextInput).attrs({
   theme: {
@@ -10,11 +10,4 @@ export const AuthInput = styled(TextInput).attrs({
   },
 })`
   width: 300px;
-`;
-
-export const AuthButton = styled(Button).attrs({
-  color: colors.brand.primary,
-  mode: "contained",
-})`
-  padding: ${(props) => props.theme.spacing[2]};
 `;

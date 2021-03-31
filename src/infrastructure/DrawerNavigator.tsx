@@ -1,8 +1,8 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
-import AddRecordScreen from "../screens/AddRecordScreen";
-import DashboardScreen from "../screens/account/DashboardScreen";
-import { RootDrawerParamList } from "../screens/types";
+import AddRecordScreen from "../screens/root/AddRecordScreen";
+import DashboardScreen from "../screens/root/DashboardScreen";
+import { RootDrawerParamList } from "../screens/root/types";
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator<RootDrawerParamList>();

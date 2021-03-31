@@ -1,8 +1,23 @@
 export interface CustomTheme {
-  colors: {};
+  colors: {
+    text: {
+      primary: string;
+      error: string;
+    };
+  };
   spacing: {};
-  fonts: {};
-  fontSizes: {};
-  fontWeights: {};
+  fonts: {
+    body: string;
+    heading: string;
+  };
+  fontSizes: {
+    body: string;
+    caption: string;
+  };
+  fontWeights: {
+    regular: number;
+    bold: number;
+    medium: number;
+  };
   sizes: {};
 }
