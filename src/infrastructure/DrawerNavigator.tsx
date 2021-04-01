@@ -1,7 +1,9 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
+import { SafeArea } from "../components/lib/SafeArea";
 import AddRecordScreen from "../screens/root/AddRecordScreen";
 import DashboardScreen from "../screens/root/DashboardScreen";
+import DrawerContent from "../screens/root/drawer/DrawerContent";
 import { RootDrawerParamList } from "../screens/root/types";
 
 const DrawerNavigator = () => {
@@ -11,10 +13,7 @@ const DrawerNavigator = () => {
     <>
       <Drawer.Navigator
         initialRouteName="Dashboard"
-        drawerStyle={{
-          backgroundColor: "#c6cbef",
-          width: 240,
-        }}
+        drawerContent={(props) => <DrawerContent {...props} />}
       >
         <Drawer.Screen
           name="Dashboard"
