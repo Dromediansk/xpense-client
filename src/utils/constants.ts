@@ -1,3 +1,3 @@
 export enum AUTH {
-  DATA = "Auth_data",
+  DATA = 'Auth_data',
 }

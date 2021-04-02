@@ -1,17 +1,38 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from '@react-native-community/async-storage';
 import {
-  DrawerContentComponentProps,
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
-} from "@react-navigation/drawer";
-import React, { useContext } from "react";
-import { View } from "react-native";
-import { AuthenticationContext } from "../../../../services/auth/Authentication";
-import { postLogoutService } from "../../../../services/auth/authServices";
-import { AUTH } from "../../../../utils/constants";
+} from '@react-navigation/drawer';
+import {
+  DrawerDescriptorMap,
+  DrawerNavigationHelpers,
+} from '@react-navigation/drawer/lib/typescript/src/types';
+import {
+  DrawerNavigationState,
+  ParamListBase,
+} from '@react-navigation/routers';
+import React, { useContext } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { AuthenticationContext } from '../../../../services/auth/Authentication';
+import { postLogoutService } from '../../../../services/auth/authServices';
+import { AUTH } from '../../../../utils/constants';
 
-const DrawerContent = (props: DrawerContentComponentProps) => {
+type Props = {
+  state: DrawerNavigationState<ParamListBase>;
+  navigation: DrawerNavigationHelpers;
+  descriptors: DrawerDescriptorMap;
+};
+
+const styles = StyleSheet.create({
+  drawerContentContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+});
+
+const DrawerContent = ({ navigation, state, descriptors }: Props) => {
   const { user, setUser } = useContext(AuthenticationContext);
 
   const handleLogout = async () => {
@@ -24,21 +45,20 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
         }
       }
     } catch (err) {
-      console.log(err);
+      // TODO handle error
     }
   };
 
   return (
     <DrawerContentScrollView
-      {...props}
-      contentContainerStyle={{
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
+      contentContainerStyle={styles.drawerContentContainer}
     >
       <View>
-        <DrawerItemList {...props} />
+        <DrawerItemList
+          navigation={navigation}
+          state={state}
+          descriptors={descriptors}
+        />
       </View>
       <DrawerItem label="Log out" onPress={handleLogout} />
     </DrawerContentScrollView>

@@ -1,40 +1,40 @@
-import React, { useState, useContext } from "react";
-import { AuthenticationContext } from "../../services/auth/Authentication";
-import { validateEmail } from "../../utils/functions";
+import React, { useState, useContext } from 'react';
+import { AuthenticationContext } from '../../services/auth/Authentication';
+import { validateEmail } from '../../utils/functions';
 import {
   AccountBackground,
   AccountCover,
   AuthInput,
   ErrorContainer,
-} from "./account.styles";
-import { Spacer } from "../../components/lib/Spacer";
-import { Typography } from "../../components/lib/Typography";
-import { Size } from "../../theme/sizes";
-import { colors } from "../../theme/colors";
-import { StackScreenProps } from "@react-navigation/stack";
-import { AccountStackParamList } from "./types";
-import { CustomButton } from "../../components/lib/Buttons";
-import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
-import ViewCenter from "../../components/lib/ViewCenter";
-import { AxiosResponse } from "axios";
-import { postLoginService } from "../../services/auth/authServices";
-import { AuthResponse } from "../../services/auth/types";
-import AsyncStorage from "@react-native-community/async-storage";
-import { AUTH } from "../../utils/constants";
+} from './account.styles';
+import { Spacer } from '../../components/lib/Spacer';
+import { Typography } from '../../components/lib/Typography';
+import { Size } from '../../theme/sizes';
+import { colors } from '../../theme/colors';
+import { StackScreenProps } from '@react-navigation/stack';
+import { AccountStackParamList } from './types';
+import { CustomButton } from '../../components/lib/Buttons';
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import ViewCenter from '../../components/lib/ViewCenter';
+import { AxiosResponse } from 'axios';
+import { postLoginService } from '../../services/auth/authServices';
+import { AuthResponse } from '../../services/auth/types';
+import AsyncStorage from '@react-native-community/async-storage';
+import { AUTH } from '../../utils/constants';
 
-type Props = StackScreenProps<AccountStackParamList, "Register">;
+type Props = StackScreenProps<AccountStackParamList, 'Register'>;
 
 const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [formState, setFormState] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [formError, setFormError] = useState({
     email: false,
     password: false,
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const { setUser } = useContext(AuthenticationContext);
 
@@ -50,7 +50,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
         JSON.stringify({
           userId: response.data.userId,
           token: response.data.token,
-        })
+        }),
       );
       setIsLoading(false);
       setUser({
@@ -58,7 +58,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
         token: response.data.token,
       });
     } catch (err) {
-      setError("Invalid credentials!");
+      setError('Invalid credentials!');
       setIsLoading(false);
     }
   };
@@ -72,7 +72,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   const handleFormStateChange = (key: string, value: string): void => {
-    if (key === "email") {
+    if (key === 'email') {
       setFormError({ email: false, password: false });
     }
     setFormState({
@@ -86,13 +86,13 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
       <AccountCover>
         <ViewCenter>
           <AuthInput
-            label={formError.email ? "Invalid e-mail address" : "E-mail"}
+            label={formError.email ? 'Invalid e-mail address' : 'E-mail'}
             value={formState.email}
             textContentType="emailAddress"
             keyboardType="email-address"
             autoCapitalize="none"
             onChange={(event: NativeSyntheticEvent<TextInputChangeEventData>) =>
-              handleFormStateChange("email", event.nativeEvent.text)
+              handleFormStateChange('email', event.nativeEvent.text)
             }
             error={formError.email}
           />
@@ -104,7 +104,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
             secureTextEntry
             autoCapitalize="none"
             onChange={(event: NativeSyntheticEvent<TextInputChangeEventData>) =>
-              handleFormStateChange("password", event.nativeEvent.text)
+              handleFormStateChange('password', event.nativeEvent.text)
             }
           />
           {error ? (
@@ -127,7 +127,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
           </Typography>
           <Typography
             variant="body"
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate('Register')}
           >
             Register here
           </Typography>

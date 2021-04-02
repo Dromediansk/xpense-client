@@ -1,15 +1,15 @@
-import React from "react";
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import Authentication from "./src/services/auth/Authentication";
-import { Navigation } from "./src/infrastructure";
-import { ThemeProvider } from "styled-components/native";
+import React from 'react';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import Authentication from './src/services/auth/Authentication';
+import { Navigation } from './src/infrastructure';
+import { ThemeProvider } from 'styled-components/native';
 
-import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import {
   useFonts as useOswald,
   Oswald_400Regular,
-} from "@expo-google-fonts/oswald";
-import { theme } from "./src/theme";
+} from '@expo-google-fonts/oswald';
+import { theme } from './src/theme';
 
 const App = (): JSX.Element | null => {
   const [oswaldLoaded] = useOswald({

@@ -1,17 +1,11 @@
-import { StackScreenProps } from "@react-navigation/stack";
-import React from "react";
-import { Text } from "react-native";
-import { RootDrawerParamList } from "./types";
-import ViewCenter from "../../components/lib/ViewCenter";
+import React from 'react';
+import { Text } from 'react-native';
+import { ViewCenter } from '../../components/lib/ViewCenter';
 
-type Props = StackScreenProps<RootDrawerParamList, "AddRecord">;
-
-const AddRecordScreen = (): JSX.Element => {
-  return (
-    <ViewCenter>
-      <Text>Adding record Screen</Text>
-    </ViewCenter>
-  );
-};
+const AddRecordScreen = (): JSX.Element => (
+  <ViewCenter>
+    <Text>Adding record Screen</Text>
+  </ViewCenter>
+);
 
 export default AddRecordScreen;

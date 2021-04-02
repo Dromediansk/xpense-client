@@ -1,12 +1,12 @@
-import { Text } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import ViewCenter from "../../components/lib/ViewCenter";
-import { CustomButton } from "../../components/lib/Buttons";
+import { Text } from 'react-native';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { ViewCenter } from '../../components/lib/ViewCenter';
+import { CustomButton } from '../../components/lib/Buttons';
 import {
   getRecordsService,
   Records,
-} from "../../services/records/recordServices";
-import { AuthenticationContext } from "../../services/auth/Authentication";
+} from '../../services/records/recordServices';
+import { AuthenticationContext } from '../../services/auth/Authentication';
 
 type Props = {
   navigation: any;
@@ -19,14 +19,14 @@ const DashboardScreen = ({ navigation, selectedDate }: Props): JSX.Element => {
 
   const { user } = useContext(AuthenticationContext);
 
-  const getRecords = async () => {
+  const getRecords = useCallback(async () => {
     try {
       if (user?.userId && user.token) {
         const expensesResponse = await getRecordsService(
           Records.EXPENSES,
           user.userId,
           user.token,
-          { dateFrom: "2021-01-01", dateTo: "2021-03-01" }
+          { dateFrom: '2021-01-01', dateTo: '2021-03-01' },
         );
         setExpenses(expensesResponse.data);
 
@@ -34,23 +34,23 @@ const DashboardScreen = ({ navigation, selectedDate }: Props): JSX.Element => {
           Records.INCOMES,
           user.userId,
           user.token,
-          { dateFrom: "2021-01-01", dateTo: "2021-03-01" }
+          { dateFrom: '2021-01-01', dateTo: '2021-03-01' },
         );
-        setIncomes(expensesResponse.data);
+        setIncomes(incomesResponse.data);
       }
     } catch (err) {
-      console.log(err);
+      // TODO handle error
     }
-  };
+  }, [user]);
 
   useEffect(() => {
     if (user?.userId && user.token) getRecords();
-  }, []);
+  }, [user, getRecords]);
 
   return (
     <ViewCenter>
       <Text>Dashboard Screen</Text>
-      <CustomButton onPress={() => navigation.navigate("AddRecord")}>
+      <CustomButton onPress={() => navigation.navigate('AddRecord')}>
         Add record
       </CustomButton>
     </ViewCenter>

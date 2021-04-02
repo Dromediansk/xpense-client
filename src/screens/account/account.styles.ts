@@ -1,9 +1,10 @@
-import { colors } from "./../../theme/colors";
-import styled from "styled-components/native";
-import { TextInput } from "react-native-paper";
+import styled from 'styled-components/native';
+import { TextInput } from 'react-native-paper';
+import { colors } from '../../theme/colors';
 
 export const AccountBackground = styled.ImageBackground.attrs({
-  source: require("../../../assets/money.jpeg"),
+  // eslint-disable-next-line global-require
+  source: require('../../../assets/money.jpeg'),
 })`
   flex: 1;
   align-items: center;
