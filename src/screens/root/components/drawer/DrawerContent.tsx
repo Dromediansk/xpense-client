@@ -7,9 +7,9 @@ import {
 } from "@react-navigation/drawer";
 import React, { useContext } from "react";
 import { View } from "react-native";
-import { AuthenticationContext } from "../../../services/auth/Authentication";
-import { postLogoutService } from "../../../services/auth/authServices";
-import { AUTH } from "../../../utils/constants";
+import { AuthenticationContext } from "../../../../services/auth/Authentication";
+import { postLogoutService } from "../../../../services/auth/authServices";
+import { AUTH } from "../../../../utils/constants";
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
   const { user, setUser } = useContext(AuthenticationContext);

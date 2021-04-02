@@ -19,7 +19,6 @@ import ViewCenter from "../../components/lib/ViewCenter";
 import { AxiosResponse } from "axios";
 import { postLoginService } from "../../services/auth/authServices";
 import { AuthResponse } from "../../services/auth/types";
-
 import AsyncStorage from "@react-native-community/async-storage";
 import { AUTH } from "../../utils/constants";
 
