@@ -1,25 +1,24 @@
 import React, { useState, useContext } from 'react';
+import { StackScreenProps } from '@react-navigation/stack';
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import { AxiosResponse } from 'axios';
+import AsyncStorage from '@react-native-community/async-storage';
 import { AuthenticationContext } from '../../services/auth/Authentication';
 import { validateEmail } from '../../utils/functions';
 import {
   AccountBackground,
   AccountCover,
-  AuthInput,
   ErrorContainer,
 } from './account.styles';
 import { Spacer } from '../../components/lib/Spacer';
 import { Typography } from '../../components/lib/Typography';
 import { Size } from '../../theme/sizes';
 import { colors } from '../../theme/colors';
-import { StackScreenProps } from '@react-navigation/stack';
 import { AccountStackParamList } from './types';
 import { CustomButton } from '../../components/lib/Buttons';
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
-import ViewCenter from '../../components/lib/ViewCenter';
-import { AxiosResponse } from 'axios';
+import { CustomInput, ViewCenter } from '../../components/lib/general';
 import { postLoginService } from '../../services/auth/authServices';
 import { AuthResponse } from '../../services/auth/types';
-import AsyncStorage from '@react-native-community/async-storage';
 import { AUTH } from '../../utils/constants';
 
 type Props = StackScreenProps<AccountStackParamList, 'Register'>;
@@ -85,7 +84,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
     <AccountBackground>
       <AccountCover>
         <ViewCenter>
-          <AuthInput
+          <CustomInput
             label={formError.email ? 'Invalid e-mail address' : 'E-mail'}
             value={formState.email}
             textContentType="emailAddress"
@@ -97,7 +96,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
             error={formError.email}
           />
           <Spacer size={Size.MEDIUM} />
-          <AuthInput
+          <CustomInput
             label="Password"
             value={formState.password}
             textContentType="password"
@@ -123,7 +122,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
           </CustomButton>
           <Spacer size={Size.SMALL} />
           <Typography style={{ color: colors.common.black }} variant="body">
-            Don't have an account?
+            Don&apos;t have an account?
           </Typography>
           <Typography
             variant="body"

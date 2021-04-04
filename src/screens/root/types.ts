@@ -1,4 +1,10 @@
 export type RootDrawerParamList = {
   Dashboard: undefined;
-  AddRecord: undefined;
+  NewRecord: undefined;
 };
+
+export interface Category {
+  id: number;
+  userId: number;
+  name: string;
+}

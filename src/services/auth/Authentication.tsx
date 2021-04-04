@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface User {
+export interface User {
   userId: number;
   token: string;
 }

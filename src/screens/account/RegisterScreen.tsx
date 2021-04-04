@@ -11,7 +11,7 @@ import { HelperText } from 'react-native-paper';
 import { CustomButton } from '../../components/lib/Buttons';
 import { Spacer } from '../../components/lib/Spacer';
 import { Typography } from '../../components/lib/Typography';
-import ViewCenter from '../../components/lib/ViewCenter';
+import { CustomInput, ViewCenter } from '../../components/lib/general';
 import { AuthenticationContext } from '../../services/auth/Authentication';
 import { postRegisterService } from '../../services/auth/authServices';
 import { AuthResponse } from '../../services/auth/types';
@@ -21,12 +21,17 @@ import { validateEmail } from '../../utils/functions';
 import {
   AccountBackground,
   AccountCover,
-  AuthInput,
   ErrorContainer,
 } from './account.styles';
 import { AccountStackParamList } from './types';
 
 type Props = StackScreenProps<AccountStackParamList, 'Login'>;
+
+const styles = StyleSheet.create({
+  helperText: {
+    height: 24,
+  },
+});
 
 const RegisterScreen = ({ navigation }: Props): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +57,8 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
         email: true,
       });
       return false;
-    } else if (!passwordsMatching) {
+    }
+    if (!passwordsMatching) {
       setFormError({
         ...formError,
         password: true,
@@ -109,7 +115,7 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
     <AccountBackground>
       <AccountCover>
         <ViewCenter>
-          <AuthInput
+          <CustomInput
             label="E-mail"
             value={formState.email}
             textContentType="emailAddress"
@@ -128,7 +134,7 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
             <Spacer size={Size.MEDIUM} />
           )}
 
-          <AuthInput
+          <CustomInput
             label="Password"
             value={formState.password}
             textContentType="password"
@@ -141,12 +147,12 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
           />
           {formError.password ? (
             <HelperText type="error" visible style={styles.helperText}>
-              Passwords don't match!{' '}
+              Passwords don&apos;t match!{' '}
             </HelperText>
           ) : (
             <Spacer size={Size.MEDIUM} />
           )}
-          <AuthInput
+          <CustomInput
             label="Repeat password"
             value={formState.repeatedPassword}
             textContentType="password"
@@ -183,11 +189,5 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
     </AccountBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  helperText: {
-    height: 24,
-  },
-});
 
 export default RegisterScreen;

@@ -3,8 +3,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import dayjs from 'dayjs';
-import AddRecordScreen from '../screens/root/AddRecordScreen';
+import { Dayjs } from 'dayjs';
+import NewRecordScreen from '../screens/root/NewRecordScreen';
 import DashboardScreen from '../screens/root/DashboardScreen';
 import DrawerContent from '../screens/root/components/drawer/DrawerContent';
 import { RootDrawerParamList } from '../screens/root/types';
@@ -12,10 +12,12 @@ import { colors } from '../theme/colors';
 import { Typography } from '../components/lib/Typography';
 import { DateFormats } from '../utils/dateFormats';
 
-const DrawerNavigator = () => {
-  const Drawer = createDrawerNavigator<RootDrawerParamList>();
+interface Props {
+  currentDate: Dayjs;
+}
 
-  const currentDate = dayjs().format(DateFormats.MONTH_YEAR);
+const DrawerNavigator = ({ currentDate }: Props) => {
+  const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
   return (
     <>
@@ -42,7 +44,7 @@ const DrawerNavigator = () => {
                     color: colors.common.white,
                   }}
                 >
-                  {currentDate}
+                  {currentDate.format(DateFormats.MONTH_YEAR)}
                 </Typography>
               </View>
             ),
@@ -68,18 +70,9 @@ const DrawerNavigator = () => {
             ),
           }}
         >
-          {({ navigation }) => (
-            <DashboardScreen
-              navigation={navigation}
-              selectedDate={currentDate}
-            />
-          )}
+          {({ navigation }) => <DashboardScreen navigation={navigation} />}
         </Drawer.Screen>
-        <Drawer.Screen
-          name="AddRecord"
-          component={AddRecordScreen}
-          options={{ headerShown: true }}
-        />
+        <Drawer.Screen name="NewRecord" component={NewRecordScreen} />
       </Drawer.Navigator>
     </>
   );

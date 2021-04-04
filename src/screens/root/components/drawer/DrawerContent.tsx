@@ -37,14 +37,17 @@ const DrawerContent = ({ navigation, state, descriptors }: Props) => {
 
   const handleLogout = async () => {
     try {
-      if (user) {
+      if (user?.userId) {
         const response = await postLogoutService(user.userId, user.token);
         if (response.status === 200) {
           await AsyncStorage.removeItem(AUTH.DATA);
           setUser(null);
         }
+      } else {
+        throw new Error();
       }
     } catch (err) {
+      console.log('err', err);
       // TODO handle error
     }
   };
