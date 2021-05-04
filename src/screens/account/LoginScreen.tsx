@@ -57,6 +57,7 @@ const LoginScreen = ({ navigation }: Props): JSX.Element => {
         token: response.data.token,
       });
     } catch (err) {
+      console.log('err', err);
       setError('Invalid credentials!');
       setIsLoading(false);
     }

@@ -1,3 +1,4 @@
+import { HOST } from '@env';
 import axios, { AxiosResponse } from 'axios';
 
 interface RecordsPayload {
@@ -10,7 +11,7 @@ export const getRecordsService = (
   token: string,
   payload: RecordsPayload,
 ): Promise<AxiosResponse> =>
-  axios.get(`http://192.168.1.21:3000/records/${userId}`, {
+  axios.get(`${HOST}:3000/records/${userId}`, {
     headers: {
       authorization: token,
       dateFrom: payload.dateFrom,

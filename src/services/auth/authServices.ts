@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { HOST } from '@env';
 
 interface LoginPayload {
   email: string;
@@ -8,7 +9,7 @@ interface LoginPayload {
 export const postLoginService = (
   payload: LoginPayload,
 ): Promise<AxiosResponse> =>
-  axios.post('http://192.168.1.21:3000/login', payload, {
+  axios.post(`${HOST}:3000/login`, payload, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -18,7 +19,7 @@ export const postLogoutService = (
   userId: number,
   token: string,
 ): Promise<AxiosResponse> =>
-  axios.post('http://192.168.1.21:3000/logout', userId, {
+  axios.post(`${HOST}:3000/logout`, userId, {
     headers: {
       'Content-Type': 'application/json',
       authorization: token,
@@ -28,7 +29,7 @@ export const postLogoutService = (
 export const postRegisterService = (
   payload: LoginPayload,
 ): Promise<AxiosResponse> =>
-  axios.post('http://192.168.1.21:3000/register', payload, {
+  axios.post(`${HOST}:3000/register`, payload, {
     headers: {
       'Content-Type': 'application/json',
     },

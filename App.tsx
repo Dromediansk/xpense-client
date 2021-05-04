@@ -8,8 +8,8 @@ import {
   Oswald_400Regular,
 } from '@expo-google-fonts/oswald';
 import Authentication from './src/services/auth/Authentication';
-import { Navigation } from './src/infrastructure';
 import { theme } from './src/theme';
+import Navigation from './src/infrastructure';
 
 const App = (): JSX.Element | null => {
   const [oswaldLoaded] = useOswald({
