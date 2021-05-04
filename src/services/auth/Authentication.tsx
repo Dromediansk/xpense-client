@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import { AsyncStorage } from 'react-native';
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native-paper';

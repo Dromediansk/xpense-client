@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import {
   DrawerContentScrollView,
   DrawerItem,
@@ -13,7 +12,7 @@ import {
   ParamListBase,
 } from '@react-navigation/routers';
 import React, { useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { AuthenticationContext } from '../../../../services/auth/Authentication';
 import { postLogoutService } from '../../../../services/auth/authServices';
 import { AUTH } from '../../../../utils/constants';

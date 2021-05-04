@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import {
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+  AsyncStorage,
+} from 'react-native';
 import { AxiosResponse } from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
 import { AuthenticationContext } from '../../services/auth/Authentication';
 import { validateEmail } from '../../utils/functions';
 import {

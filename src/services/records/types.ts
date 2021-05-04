@@ -1,3 +1,9 @@
+export interface ApiResponse<T> {
+  errorMessage?: string;
+  responseCode?: string;
+  data?: T;
+}
+
 export enum Records {
   EXPENSE = 'EXPENSE',
   INCOME = 'INCOME',

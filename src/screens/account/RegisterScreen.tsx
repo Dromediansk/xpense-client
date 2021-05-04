@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import { StackScreenProps } from '@react-navigation/stack';
 import { AxiosResponse } from 'axios';
 import React, { useContext, useState } from 'react';
@@ -6,6 +5,7 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
   StyleSheet,
+  AsyncStorage,
 } from 'react-native';
 import { HelperText } from 'react-native-paper';
 import { CustomButton } from '../../components/lib/Buttons';
@@ -75,6 +75,7 @@ const RegisterScreen = ({ navigation }: Props): JSX.Element => {
         email,
         password,
       });
+
       await AsyncStorage.setItem(
         AUTH.DATA,
         JSON.stringify({
